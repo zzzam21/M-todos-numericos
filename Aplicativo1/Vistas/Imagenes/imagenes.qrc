@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="Aplicativo">
+    <file>Banner.jpg</file>
+    <file>escoba.png</file>
+    <file>Icono_Aplicativo.png</file>
+    <file>icons8-comprobado-24.png</file>
+  </qresource>
+</RCC>
