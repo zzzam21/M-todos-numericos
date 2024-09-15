@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'InterfazoQQRWa.ui'
+## Form generated from reading UI file 'InterfazIqsORh.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.4.3
 ##
@@ -17,8 +17,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QHBoxLayout,
     QHeaderView, QLabel, QLineEdit, QMainWindow,
-    QPushButton, QSizePolicy, QTableView, QVBoxLayout,
-    QWidget)
+    QPushButton, QSizePolicy, QTableWidget, QTableWidgetItem,
+    QVBoxLayout, QWidget)
 from .Imagenes import img
 
 class Ui_Aplicativo1(object):
@@ -97,10 +97,8 @@ class Ui_Aplicativo1(object):
         self.frame_2.setMinimumSize(QSize(0, 300))
         self.frame_2.setFrameShape(QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_7 = QVBoxLayout(self.frame_2)
-        self.verticalLayout_7.setSpacing(0)
-        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.verticalLayout_7.setContentsMargins(20, 50, 20, 50)
+        self.verticalLayout = QVBoxLayout(self.frame_2)
+        self.verticalLayout.setObjectName(u"verticalLayout")
         self.lb_ncs = QLabel(self.frame_2)
         self.lb_ncs.setObjectName(u"lb_ncs")
         self.lb_ncs.setMinimumSize(QSize(0, 25))
@@ -109,12 +107,12 @@ class Ui_Aplicativo1(object):
         font1.setBold(True)
         self.lb_ncs.setFont(font1)
 
-        self.verticalLayout_7.addWidget(self.lb_ncs)
+        self.verticalLayout.addWidget(self.lb_ncs)
 
         self.le_ncs = QLineEdit(self.frame_2)
         self.le_ncs.setObjectName(u"le_ncs")
 
-        self.verticalLayout_7.addWidget(self.le_ncs)
+        self.verticalLayout.addWidget(self.le_ncs)
 
         self.lb_x = QLabel(self.frame_2)
         self.lb_x.setObjectName(u"lb_x")
@@ -122,12 +120,31 @@ class Ui_Aplicativo1(object):
         self.lb_x.setMaximumSize(QSize(16777215, 25))
         self.lb_x.setFont(font1)
 
-        self.verticalLayout_7.addWidget(self.lb_x)
+        self.verticalLayout.addWidget(self.lb_x)
 
-        self.le_x = QLineEdit(self.frame_2)
+        self.frame_3 = QFrame(self.frame_2)
+        self.frame_3.setObjectName(u"frame_3")
+        self.frame_3.setMinimumSize(QSize(0, 25))
+        self.frame_3.setMaximumSize(QSize(16777215, 50))
+        self.frame_3.setFrameShape(QFrame.StyledPanel)
+        self.frame_3.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_4 = QHBoxLayout(self.frame_3)
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.le_x = QLineEdit(self.frame_3)
         self.le_x.setObjectName(u"le_x")
+        self.le_x.setMinimumSize(QSize(200, 0))
+        self.le_x.setMaximumSize(QSize(200, 16777215))
 
-        self.verticalLayout_7.addWidget(self.le_x)
+        self.horizontalLayout_4.addWidget(self.le_x)
+
+        self.pb_pi = QPushButton(self.frame_3)
+        self.pb_pi.setObjectName(u"pb_pi")
+        self.pb_pi.setMaximumSize(QSize(50, 50))
+
+        self.horizontalLayout_4.addWidget(self.pb_pi)
+
+
+        self.verticalLayout.addWidget(self.frame_3)
 
         self.lb_selfun = QLabel(self.frame_2)
         self.lb_selfun.setObjectName(u"lb_selfun")
@@ -135,14 +152,14 @@ class Ui_Aplicativo1(object):
         self.lb_selfun.setMaximumSize(QSize(16777215, 25))
         self.lb_selfun.setFont(font1)
 
-        self.verticalLayout_7.addWidget(self.lb_selfun)
+        self.verticalLayout.addWidget(self.lb_selfun)
 
         self.cb_selfun = QComboBox(self.frame_2)
         self.cb_selfun.addItem("")
         self.cb_selfun.addItem("")
         self.cb_selfun.setObjectName(u"cb_selfun")
 
-        self.verticalLayout_7.addWidget(self.cb_selfun)
+        self.verticalLayout.addWidget(self.cb_selfun)
 
 
         self.verticalLayout_6.addWidget(self.frame_2, 0, Qt.AlignTop)
@@ -177,10 +194,20 @@ class Ui_Aplicativo1(object):
 
         self.verticalLayout_2.addWidget(self.lb_criterioError)
 
-        self.tv_datos = QTableView(self.frame_6)
-        self.tv_datos.setObjectName(u"tv_datos")
+        self.tw_datos = QTableWidget(self.frame_6)
+        if (self.tw_datos.columnCount() < 4):
+            self.tw_datos.setColumnCount(4)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.tw_datos.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.tw_datos.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.tw_datos.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        self.tw_datos.setHorizontalHeaderItem(3, __qtablewidgetitem3)
+        self.tw_datos.setObjectName(u"tw_datos")
 
-        self.verticalLayout_2.addWidget(self.tv_datos)
+        self.verticalLayout_2.addWidget(self.tw_datos)
 
 
         self.verticalLayout_5.addWidget(self.frame_6)
@@ -254,11 +281,20 @@ class Ui_Aplicativo1(object):
         self.lb_titulo.setText(QCoreApplication.translate("Aplicativo1", u"PARAMETROS", None))
         self.lb_ncs.setText(QCoreApplication.translate("Aplicativo1", u"Numero de cifras cignificativas:", None))
         self.lb_x.setText(QCoreApplication.translate("Aplicativo1", u"Valor de X:", None))
+        self.pb_pi.setText(QCoreApplication.translate("Aplicativo1", u"\u03c0", None))
         self.lb_selfun.setText(QCoreApplication.translate("Aplicativo1", u"Selecci\u00f3ne una funci\u00f3n:", None))
         self.cb_selfun.setItemText(0, QCoreApplication.translate("Aplicativo1", u"Sen(x)", None))
         self.cb_selfun.setItemText(1, QCoreApplication.translate("Aplicativo1", u"Cos(X)", None))
 
         self.lb_criterioError.setText(QCoreApplication.translate("Aplicativo1", u"Criterio de error (Es): ", None))
+        ___qtablewidgetitem = self.tw_datos.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("Aplicativo1", u"n", None));
+        ___qtablewidgetitem1 = self.tw_datos.horizontalHeaderItem(1)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("Aplicativo1", u"Resultado", None));
+        ___qtablewidgetitem2 = self.tw_datos.horizontalHeaderItem(2)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("Aplicativo1", u"Sumatoria", None));
+        ___qtablewidgetitem3 = self.tw_datos.horizontalHeaderItem(3)
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("Aplicativo1", u"E(%)", None));
         self.pb_limpiar.setText(QCoreApplication.translate("Aplicativo1", u"Limpiar", None))
         self.pb_calcular.setText(QCoreApplication.translate("Aplicativo1", u"Calcular", None))
     # retranslateUi

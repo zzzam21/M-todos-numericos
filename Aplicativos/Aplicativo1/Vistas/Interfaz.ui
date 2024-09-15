@@ -166,22 +166,7 @@
                <property name="frameShadow">
                 <enum>QFrame::Raised</enum>
                </property>
-               <layout class="QVBoxLayout" name="verticalLayout_7">
-                <property name="spacing">
-                 <number>0</number>
-                </property>
-                <property name="leftMargin">
-                 <number>20</number>
-                </property>
-                <property name="topMargin">
-                 <number>50</number>
-                </property>
-                <property name="rightMargin">
-                 <number>20</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>50</number>
-                </property>
+               <layout class="QVBoxLayout" name="verticalLayout">
                 <item>
                  <widget class="QLabel" name="lb_ncs">
                   <property name="minimumSize">
@@ -234,7 +219,57 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="le_x"/>
+                 <widget class="QFrame" name="frame_3">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>50</height>
+                   </size>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_4">
+                   <item>
+                    <widget class="QLineEdit" name="le_x">
+                     <property name="minimumSize">
+                      <size>
+                       <width>200</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>200</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pb_pi">
+                     <property name="maximumSize">
+                      <size>
+                       <width>50</width>
+                       <height>50</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>π</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
                 </item>
                 <item>
                  <widget class="QLabel" name="lb_selfun">
@@ -320,7 +355,28 @@
            </widget>
           </item>
           <item>
-           <widget class="QTableView" name="tv_datos"/>
+           <widget class="QTableWidget" name="tw_datos">
+            <column>
+             <property name="text">
+              <string>n</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Resultado</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Sumatoria</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>E(%)</string>
+             </property>
+            </column>
+           </widget>
           </item>
          </layout>
         </widget>
