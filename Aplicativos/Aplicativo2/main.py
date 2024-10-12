@@ -41,6 +41,7 @@ class mainWindow (QMainWindow):
     
     def punto1 (self,XI,XS):
         try:
+            # SI HAY ERROR EN LA ENTRADA DE LOS X SALE MENSAJE
             xi = float(XI)
             xs = float(XS)
             self.MBS(xi,xs,'tw_bisecp1')
@@ -53,7 +54,7 @@ class mainWindow (QMainWindow):
         Fxs = (xs)**10.0-1.0
         
         if self.TCS(Fxi,Fxs):
-            widget = getattr(self.ui,tabla) #Aqui se obtiene el widget que se va a usar
+            widget = getattr(self.ui,tabla) #Aqui se obtiene el widget que se va a usar para poder reutilizar la funcion
             
             xr = (xi+xs)/2
             Es = 0.5 * 10**(2-4)

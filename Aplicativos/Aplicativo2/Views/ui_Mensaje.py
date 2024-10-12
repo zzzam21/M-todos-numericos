@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'MensajefYRPYx.ui'
+## Form generated from reading UI file 'MensajeZpifcu.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.4.3
 ##
@@ -28,7 +28,7 @@ class Ui_Error(object):
         Error.setMinimumSize(QSize(400, 324))
         Error.setMaximumSize(QSize(400, 324))
         icon = QIcon()
-        icon.addFile(u":/Aplicativo/ErrorIcon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u":/Metodos/ErrorIcon.png", QSize(), QIcon.Normal, QIcon.Off)
         Error.setWindowIcon(icon)
         self.verticalLayout = QVBoxLayout(Error)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -73,7 +73,7 @@ class Ui_Error(object):
         self.lb_imagenError.setObjectName(u"lb_imagenError")
         self.lb_imagenError.setMinimumSize(QSize(100, 100))
         self.lb_imagenError.setMaximumSize(QSize(100, 100))
-        self.lb_imagenError.setPixmap(QPixmap(u":/Aplicativo/error.png"))
+        self.lb_imagenError.setPixmap(QPixmap(u":/Metodos/error.png"))
         self.lb_imagenError.setScaledContents(True)
 
         self.horizontalLayout.addWidget(self.lb_imagenError)

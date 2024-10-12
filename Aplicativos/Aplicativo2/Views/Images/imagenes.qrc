@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="Metodos">
+    <file>error.png</file>
+    <file>ErrorIcon.png</file>
     <file>icono.png</file>
   </qresource>
 </RCC>
