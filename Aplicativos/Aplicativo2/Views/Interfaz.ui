@@ -1,0 +1,834 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>834</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Metodos numéricos</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="Images/imagenes.qrc">
+    <normaloff>:/Metodos/icono.png</normaloff>:/Metodos/icono.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+    background-color: #ffffff; /* Blanco */
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+QPushButton {
+    background-color: #4CAF50; /* Verde claro */
+    color: #ffffff; /* Texto blanco */
+    border: 2px solid #388E3C; /* Verde oscuro */
+    border-radius: 5px;
+    padding: 8px 15px;
+}
+QPushButton:hover {
+    background-color: #388E3C; /* Verde oscuro al pasar el ratón */
+}
+
+QPushButton:pressed {
+    background-color: #9dff75; /* Amarillo al presionar */
+    color: #000000; /* Texto negro */
+}
+
+/* Line Edits (cajas de texto) */
+QLineEdit {
+    background-color: #ffffff;
+    color: #4CAF50; /* Texto en verde claro */
+    border: 2px solid #388E3C; /* Borde verde oscuro */
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/* Labels */
+QLabel {
+    color: #4CAF50; /* Texto en verde claro */
+    font-weight: bold;
+}
+
+/* Tablas */
+QTableWidget {
+    background-color: #ffffff; /* Fondo blanco */
+    color: #4CAF50; /* Texto verde claro */
+    border: 2px solid #388E3C; /* Borde verde oscuro */
+    gridline-color: #388E3C; /* Líneas de la tabla verde oscuro */
+}
+
+QHeaderView::section {
+    background-color: #388E3C; /* Verde oscuro para los encabezados */
+    color: #ffffff; /* Texto blanco */
+    padding: 5px;
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QWidget" name="widget" native="true">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>50</height>
+       </size>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QWidget" name="widget_9" native="true">
+         <property name="minimumSize">
+          <size>
+           <width>300</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>300</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="sizeIncrement">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item alignment="Qt::AlignHCenter">
+           <widget class="QLabel" name="lb_Titulo">
+            <property name="styleSheet">
+             <string notr="true">font-size:20px;</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_10" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QPushButton" name="pb_p1">
+            <property name="text">
+             <string>Punto 1</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pb_p2">
+            <property name="text">
+             <string>Punto 2</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pb_p3">
+            <property name="text">
+             <string>Punto3</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="widget_2" native="true">
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QStackedWidget" name="stackedWidget">
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="punto1">
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <widget class="QWidget" name="widget_4" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>45</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>45</height>
+              </size>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QWidget" name="widget_8" native="true">
+                <property name="maximumSize">
+                 <size>
+                  <width>300</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_8">
+                 <item>
+                  <widget class="QLabel" name="lb_Xip1">
+                   <property name="text">
+                    <string>Xi:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="le_xip1">
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="lb_Xsp2">
+                   <property name="text">
+                    <string>Xs:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="le_xsp1"/>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="pb_calcp1">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="sizeIncrement">
+                    <size>
+                     <width>0</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Calcular</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="widget_3" native="true">
+             <layout class="QHBoxLayout" name="horizontalLayout">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QWidget" name="widget_5" native="true">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_5">
+                 <item>
+                  <widget class="QTableWidget" name="tw_bisecp1">
+                   <column>
+                    <property name="text">
+                     <string>Xi</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Xs</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Xr</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>F(Xi)</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>F(Xr)</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>E%</string>
+                    </property>
+                   </column>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_6" native="true">
+                <layout class="QVBoxLayout" name="verticalLayout_6">
+                 <item>
+                  <widget class="QTableWidget" name="tw_fpP1">
+                   <column>
+                    <property name="text">
+                     <string>Xi</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Xs</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Xr</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>F(Xi)</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>F(Xs)</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>F(Xr)</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>E%</string>
+                    </property>
+                   </column>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="punto2">
+          <layout class="QVBoxLayout" name="verticalLayout_7">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QWidget" name="widget_11" native="true">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>70</height>
+              </size>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_6">
+              <item>
+               <widget class="QLabel" name="label">
+                <property name="text">
+                 <string>X</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="le_xp2"/>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pb_calcp2">
+                <property name="text">
+                 <string>Calcular</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="widget_12" native="true">
+             <layout class="QVBoxLayout" name="verticalLayout_8">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QTableWidget" name="tw_p2">
+                <column>
+                 <property name="text">
+                  <string>Xi</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Xn+1</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>F(Xi)</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>F'(Xi)</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>E%</string>
+                 </property>
+                </column>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="punto3">
+          <layout class="QVBoxLayout" name="verticalLayout_9">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QWidget" name="widget_13" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>50</height>
+              </size>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_7">
+              <item>
+               <widget class="QLabel" name="label_2">
+                <property name="text">
+                 <string>X</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="le_xp3"/>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_3">
+                <property name="text">
+                 <string>Xi</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="le_xip3"/>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_4">
+                <property name="text">
+                 <string>Xs</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="le_xsp3"/>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pb_calcp3">
+                <property name="text">
+                 <string>Calcular</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="widget_14" native="true">
+             <layout class="QGridLayout" name="gridLayout">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <property name="spacing">
+               <number>3</number>
+              </property>
+              <item row="0" column="1">
+               <widget class="QWidget" name="widget_16" native="true">
+                <property name="minimumSize">
+                 <size>
+                  <width>400</width>
+                  <height>237</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_11">
+                 <item>
+                  <widget class="QLabel" name="label_6">
+                   <property name="text">
+                    <string>M. Falsa posición</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QTableWidget" name="tw_Fsp3">
+                   <column>
+                    <property name="text">
+                     <string>Xi</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Xs</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Xr</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>F(Xi)</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>F(Xs)</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>F(Xr)</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>E%</string>
+                    </property>
+                   </column>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QWidget" name="widget_15" native="true">
+                <property name="minimumSize">
+                 <size>
+                  <width>400</width>
+                  <height>237</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_10">
+                 <item>
+                  <widget class="QLabel" name="label_5">
+                   <property name="text">
+                    <string>M. Bisección</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QTableWidget" name="tw_BisecP3">
+                   <column>
+                    <property name="text">
+                     <string>Xi</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Xs</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Xr</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>F(Xi)</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>F(Xr)</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>E%</string>
+                    </property>
+                   </column>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QWidget" name="widget_18" native="true">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_13">
+                 <item>
+                  <widget class="QLabel" name="label_8">
+                   <property name="text">
+                    <string>M. de Newthon-Raphson</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QTableWidget" name="tw_NRP3">
+                   <column>
+                    <property name="text">
+                     <string>Xi</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Xn+1</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>F(Xi)</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>F'(Xi)</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>E%</string>
+                    </property>
+                   </column>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QWidget" name="widget_17" native="true">
+                <layout class="QVBoxLayout" name="verticalLayout_12">
+                 <item>
+                  <widget class="QLabel" name="label_7">
+                   <property name="text">
+                    <string>M. de la secante</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QTableWidget" name="tw_secP3">
+                   <column>
+                    <property name="text">
+                     <string>Xi-1</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Xi</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Xi+1</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>F(Xi-1)</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>F(Xi)</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>E%</string>
+                    </property>
+                   </column>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="Images/imagenes.qrc"/>
+ </resources>
+ <connections/>
+</ui>

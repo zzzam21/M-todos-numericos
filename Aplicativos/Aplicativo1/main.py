@@ -12,6 +12,10 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.ui = Ui_Aplicativo1()
         self.ui.setupUi(self)
+        self.ui.tw_datos.setColumnWidth(0,10)
+        self.ui.tw_datos.setColumnWidth(1,126)
+        self.ui.tw_datos.setColumnWidth(2,126)
+        self.ui.tw_datos.setColumnWidth(3,126)
         
         self.ui.pb_calcular.clicked.connect(self.calcular)
         self.ui.pb_limpiar.clicked.connect(self.limpiar)
@@ -35,19 +39,18 @@ class MainWindow(QMainWindow):
                 
                 # LIMPIAR TABLA
                 self.limpiarTabla()
-                    
+                es = self.Es()
                 if self.ui.cb_selfun.currentIndex() == 0:
-                    es = self.Es()
                     self.sen(es,x)
                 else:
-                    pass
+                    self.cos(es,x)
             except:
                 # MENSAJE DE ERROR
                 mensaje = Error()
                 mensaje.lb_error.setText('Error de sintaxis!')
                 mensaje.pb_reintentar.clicked.connect(lambda:mensaje.close())
                 mensaje.exec()
-                
+      
     # METODO PARA LIMPIAR LAS ENTRADAS
     def limpiar (self):
         self.ui.le_ncs.setText('')
@@ -75,7 +78,7 @@ class MainWindow(QMainWindow):
     def operadores (self):
         texto = self.ui.le_x.text()
         
-        patron = r'[0-9\(\)\*/\-\+\π]+$'
+        patron = r'[0-9\(\)\*/\-\+\π\.\^]+$'
         
         texto = ''.join(c for c in texto if re.match(patron, c))
         
@@ -135,11 +138,41 @@ class MainWindow(QMainWindow):
             self.ui.tw_datos.setItem(fila,1,QTableWidgetItem(str(resultado)))
             self.ui.tw_datos.setItem(fila,2,QTableWidgetItem(str(sumatoria)))
             self.ui.tw_datos.setItem(fila,3,QTableWidgetItem(str(e)))
-        
+    
     # CALCULAR COS(X)
     def cos (self,es,x):
-        pass
-    
+        n = 0
+        i = 1
+        resultado = 0
+        sumatoria = 0
+        e = 100
+        vant = 0
+        
+        while e > es:
+                        
+            resultado = (x**n)/math.factorial(n)
+            
+            vant = sumatoria
+            if i == 1:
+                sumatoria = resultado
+            else:
+                if i%2 == 0:
+                    sumatoria = sumatoria - resultado
+                else:
+                    sumatoria = sumatoria + resultado
+            
+            e = abs(((sumatoria-vant)/sumatoria)*100)
+            
+            n += 2
+            i += 1
+            
+            fila = self.ui.tw_datos.rowCount()
+            self.ui.tw_datos.insertRow(fila)
+            self.ui.tw_datos.setItem(fila,0,QTableWidgetItem(str(n)))
+            self.ui.tw_datos.setItem(fila,1,QTableWidgetItem(str(resultado)))
+            self.ui.tw_datos.setItem(fila,2,QTableWidgetItem(str(sumatoria)))
+            self.ui.tw_datos.setItem(fila,3,QTableWidgetItem(str(e)))
+        
 if __name__ == "__main__":
      app = QApplication(sys.argv)
      window = MainWindow()
