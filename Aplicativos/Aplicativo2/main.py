@@ -1,4 +1,5 @@
-from PySide6.QtWidgets import QApplication, QMainWindow, QTableWidgetItem
+from PySide6.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QMessageBox, QStyle
+from PySide6.QtGui import QIcon
 from Views.ui_Interfaz import Ui_MainWindow
 from Views.CustomDialog import Error
 import sys
@@ -57,8 +58,9 @@ class mainWindow (QMainWindow):
                 x = xs
                 Fxs = eval(funcion)
                 if self.TCS(Fxi,Fxs):
-                    self.MBS(xi,xs,'tw_bisecp1',funcion,Es)
-                    self.FP(xi,xs,'tw_fpP1', funcion,Es)
+                    filabs = self.MBS(xi,xs,'tw_bisecp1',funcion,Es)
+                    filafp = self.FP(xi,xs,'tw_fpP1', funcion,Es)
+                    self.comentarios(filabs,filafp)
                 else:
                     self.errorTCS()
             except ValueError:
@@ -83,6 +85,8 @@ class mainWindow (QMainWindow):
             self.vacio()
         else:
             try:
+                filabs = 0
+                filafp = 0
                 funcion = 'math.tan(x)-(0.5*x)'
                 x = float(xp)
                 xi = float(XI)
@@ -94,13 +98,14 @@ class mainWindow (QMainWindow):
                 x = xs
                 Fxs = eval(funcion)
                 if self.TCS(Fxi, Fxs):
-                    self.MBS(xi, xs, 'tw_BisecP3', funcion,Es)
-                    self.FP(xi, xs, 'tw_Fsp3',funcion,Es)
+                    filabs = self.MBS(xi, xs, 'tw_BisecP3', funcion,Es)
+                    filafp = self.FP(xi, xs, 'tw_Fsp3',funcion,Es)
                 else:
                     self.errorTCS()
                     
-                self.MSE(xi,xs,'tw_secP3',funcion,Es)
-                self.NR(x,'tw_NRP3',funcion,'((1/math.cos(x))**2)-0.5', Es)
+                filamse = self.MSE(xi,xs,'tw_secP3',funcion,Es)
+                filanr = self.NR(x,'tw_NRP3',funcion,'((1/math.cos(x))**2)-0.5', Es)
+                self.comentarios2(filabs,filafp,filamse,filanr)
                 
             except ValueError:
                 self.errorSyntaxis()     
@@ -158,6 +163,7 @@ class mainWindow (QMainWindow):
                 widget.setItem(fila,3,QTableWidgetItem(str(FXi)))
                 widget.setItem(fila,4,QTableWidgetItem(str(FXr)))
                 widget.setItem(fila,5,QTableWidgetItem(str(Er)))
+            return fila+1
         except ZeroDivisionError:
             self.division0('biseccion', 'intervalo')
 
@@ -206,6 +212,7 @@ class mainWindow (QMainWindow):
                 widget.setItem(fila,4,QTableWidgetItem(str(FXs)))
                 widget.setItem(fila,5,QTableWidgetItem(str(FXr)))
                 widget.setItem(fila,6,QTableWidgetItem(str(Er)))
+            return fila+1
         except ZeroDivisionError:
             self.division0('falsa posición', 'intervalo')
 
@@ -239,6 +246,7 @@ class mainWindow (QMainWindow):
                 widget.setItem(fila,2,QTableWidgetItem(str(fx)))
                 widget.setItem(fila,3,QTableWidgetItem(str(dx)))
                 widget.setItem(fila,4,QTableWidgetItem(str(Er)))  
+            return fila+1
         except ZeroDivisionError:
             self.division0('Newton Raphson', 'valor')
             
@@ -279,7 +287,8 @@ class mainWindow (QMainWindow):
                 widget.setItem(fila,2,QTableWidgetItem(str(xr)))
                 widget.setItem(fila,3,QTableWidgetItem(str(Fxi1)))
                 widget.setItem(fila,4,QTableWidgetItem(str(Fxi)))   
-                widget.setItem(fila,5,QTableWidgetItem(str(Er)))           
+                widget.setItem(fila,5,QTableWidgetItem(str(Er)))   
+            return fila+1        
         except ZeroDivisionError:
             self.division0('secante','intervalo')
             
@@ -297,7 +306,7 @@ class mainWindow (QMainWindow):
         widget = getattr(self.ui, LE)
         text = widget.text()
         
-        patron = r'[0-9\.]+$'
+        patron = r'[0-9\.\-]+$'
         textF = ''.join(c for c in text if re.match(patron,c))
         
         widget.blockSignals(True)
@@ -324,6 +333,75 @@ class mainWindow (QMainWindow):
         dialog.lb_error.setText(f'Llene todos los campos!')
         dialog.pb_reintentar.clicked.connect(dialog.close)
         dialog.exec()
+        
+    def comentarios(self,filabs,filafp):
+        if filabs < filafp:
+            texto = "El Método de Bisección es más Efectivo ya que se realiza en " + str(filabs)+ " iteraciones"
+            self.mensaje(texto)
+        else:
+            texto = "El Método de Falsa Posición es más Efectivo ya que se realiza en " + str(filabs)+ " iteraciones"
+            self.mensaje(texto)
+            
+    def comentarios2(self,filabs,filafp,filamse,filanr):
+        if filabs != 0 and filafp != 0:
+            if filabs < filafp  and filabs < filamse and filabs < filanr:
+                texto = "El Método de Bisección es más Efectivo ya que se realiza en " + str(filabs)+ " iteraciones"
+                self.mensaje(texto)
+            elif filafp < filabs and filafp < filamse < filanr:
+                texto = "El Método de Falsa Posición es más Efectivo ya que se realiza en " + str(filabs)+ " iteraciones"
+                self.mensaje(texto)
+            elif filamse < filabs and filamse < filafp and filamse < filanr:
+                texto = "El Método de la Secante es más Efectivo ya que se realiza en " + str(filamse)+ " iteraciones"
+                self.mensaje(texto)
+            else:
+                texto = "El Método de Newton Raphson es más Efectivo ya que se realiza en " + str(filanr)+ " iteraciones"
+                self.mensaje(texto)
+        else:
+            if filamse < filanr:
+                texto = "El Método de la Secante es más Efectivo ya que se realiza en " + str(filamse)+ " iteraciones"
+                self.mensaje(texto)
+            else:
+                texto = "El Método de Newton Raphson es más Efectivo ya que se realiza en " + str(filanr)+ " iteraciones"
+                self.mensaje(texto)
+    
+    def mensaje(self, texto):
+        icon = QApplication.style().standardIcon(QStyle.SP_MessageBoxInformation)
+        mensaje = QMessageBox()
+        mensaje.setIcon(QMessageBox.Information)
+        mensaje.setWindowIcon(icon)
+        mensaje.setText(texto)
+        mensaje.setWindowTitle("Comentarios")
+        mensaje.setStandardButtons(QMessageBox.Ok)
+        mensaje.setStyleSheet("""QMessageBox {
+    background-color: #ffffff; /* Fondo blanco */
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+QMessageBox QPushButton {
+    background-color: #4CAF50; /* Verde claro */
+    color: #ffffff; /* Texto blanco */
+    border: 2px solid #388E3C; /* Verde oscuro */
+    border-radius: 5px;
+    padding: 8px 15px;
+}
+
+QMessageBox QPushButton:hover {
+    background-color: #388E3C; /* Verde oscuro al pasar el ratón */
+}
+
+QMessageBox QPushButton:pressed {
+    background-color: #9dff75; /* Amarillo al presionar */
+    color: #000000; /* Texto negro */
+}
+
+QMessageBox QLabel {
+    color: #4CAF50; /* Texto en verde claro */
+    font-weight: bold;
+}
+    """)
+        mensaje.exec()
+        
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     window = mainWindow()
